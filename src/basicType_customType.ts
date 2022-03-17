@@ -84,3 +84,5 @@ function calcTax(state, income, dependents) {
     return income * 0.05 - dependents * 300; // 뉴저지 주의 세금을 계산합니다.
   }
 }
+
+let tax = calcTax("NJ", 50000, 2); // 1900
