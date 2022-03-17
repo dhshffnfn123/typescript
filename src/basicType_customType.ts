@@ -73,3 +73,14 @@ let yourTax = getTax(50000);
 // 타입스크립트는 문자열 리터럴을 타입으로 사용할 수 있다.
 let name3: "John Smith"; // 이 변수는 John Smith란 값을 가지며 값이 변경되면 오류가 발생한다.
 // name3 = "Mary Lau"; // error
+
+//?/* ------------------------------ 함수 본문 내 타입 선언 ----------------------------- */
+// 타입스크립트 함수와 함수 표현식은 자바스크립트와 유사하지만 파라미터 타입과 반환 값을 명시적으로 선언한다.
+function calcTax(state, income, dependents) {
+  // 함수 파라미터에 타입 표기가 없다.
+  if (state === "NY") {
+    return income * 0.06 - dependents * 500; // 뉴욕 주의 세금을 계산합니다.
+  } else if (state === "NJ") {
+    return income * 0.05 - dependents * 300; // 뉴저지 주의 세금을 계산합니다.
+  }
+}
