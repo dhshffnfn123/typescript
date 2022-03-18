@@ -85,4 +85,25 @@ function calcTax(state, income, dependents) {
   }
 }
 
-let tax = calcTax("NJ", 50000, 2); // 1900
+// 타입을 지정하지 않았지만 추측할 수 있다.
+let tax = calcTax("NJ", 50000, 2); // 뉴저지주에 살고 50000달러를 벌고 2명의 부양가족이 있음
+
+// 타입을 유추할 수 없다면 에러가 발생한다.
+let tax2 = calcTax("NJ", 50000, "two"); // NaN
+
+// 함수에 타입을 지정해준다.
+function typingCalcTax(
+  state: string,
+  income: number,
+  dependents: number
+): number {
+  if (state === "NY") {
+    return income * 0.06 - dependents * 500; // 뉴욕 주의 세금을 계산합니다.
+  } else if (state === "NJ") {
+    return income * 0.05 - dependents * 300; // 뉴저지 주의 세금을 계산합니다.
+  }
+}
+// 타이핑을 해주면 dependents에 string 값을 전달하는 일은 생기지 않는다.
+// 함수의 반환값은 number이다.
+
+// * 위의 함수에 없는 주를 입력하면 undefined를 반환하므로 함수 타입 선언에 number | undefined를 작성해준다.
