@@ -111,3 +111,25 @@ function typingCalcTax(
 //?/* --------------------------------- 유니온 타입 --------------------------------- */
 // 유니온은 OR 연산자처럼 변수에 저장할 수 있는 타입이 여러 개일 경우 사용한다.
 let padding: string | number; // 숫자 또는 문자열만 허용
+
+function pddLeft(value: string, padding: any): string {
+  if (typeof padding === "number") {
+    // padding에 전달된 값이 number이면 공백을 만듭니다.
+    return Array(padding + 1).join("") + value;
+  }
+  if (typeof padding === "string") {
+    // padding에 전달된 값이 string이면 value를 이어 붙입니다.
+    return padding + value;
+  }
+  throw new Error(`Expected string or number, got '${padding}'.`); // 파라미터 타입이 string이나 number가 아닐경우 오류가 발생합니다.
+}
+
+console.log(pddLeft("Hello world", 4)); // Hello world
+console.log(pddLeft("Hello world", "!!")); // Hello world!!
+
+//* 위의 코드를 다음과 같이 유니온으로 수정하면 예외처리를 하지 않아도 된다.
+// function pddLeft(value: string, padding: number | string ):string {
+
+// TODO typeof 와 instanceof
+// typeof : 타입스크립트 내장 타입에 사용된다.
+// instanceof은 사용자가 만든 타입에 사용된다.
