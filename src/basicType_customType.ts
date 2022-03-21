@@ -157,3 +157,12 @@ let patient: Patient = {
   weight: 100,
 };
 // 위의 변수에 weight가 빠져있다면 에러가 발생한다. 이때 ?를 붙여주면 조건부 프로퍼티임을 선언한다.
+type Patient2 = {
+  name: string;
+  height: number;
+  weight?: number; // weight는 있어도 되고 없어도 된다.
+};
+let patient2: Patient2 = {
+  name: "Joe Smith",
+  height: 5,
+};
