@@ -133,3 +133,27 @@ console.log(pddLeft("Hello world", "!!")); // Hello world!!
 // TODO typeof 와 instanceof
 // typeof : 타입스크립트 내장 타입에 사용된다.
 // instanceof은 사용자가 만든 타입에 사용된다.
+
+// 변수가 두개 이상의 타입을 가질 경우, any 타입을 사용하지 않고 유니온 타입은 사용하는 것이 관습이다.
+//* never는 어떤 타입과도 호환되지 않는 타입으로 논리적으로 끝까지 실행될 수 없는 함수의 반환 값은 never 타입이 된다.
+
+//?/* ---------------------------------- 커스텀 타입 --------------------------------- */
+// 타입 스크립트는 type, interface, enum 키워드 및 클래스 선언으로 커스텀 타입을 만들 수 있다.
+
+//* Type 키워드
+// type 키워드는 새로운 타입을 선언하거나 타입 별칭을 사용해 이미 존재하는 타입에 다른 이름을 붙여 사용할 수 있다.
+type Foot = number;
+type Pound = number;
+// 위의 별칭을 사용해 새로운 타입을 만들 수 있다.
+type Patient = {
+  name: string;
+  height: Foot;
+  weight: Pound;
+};
+// 타입 별칭은 자바스크립트 코드로 컴파일되지 않는다. 따라서 변수에 할당한다.
+let patient: Patient = {
+  name: "Joe Smith",
+  height: 5,
+  weight: 100,
+};
+// 위의 변수에 weight가 빠져있다면 에러가 발생한다. 이때 ?를 붙여주면 조건부 프로퍼티임을 선언한다.
