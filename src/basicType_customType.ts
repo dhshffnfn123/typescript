@@ -166,3 +166,56 @@ let patient2: Patient2 = {
   name: "Joe Smith",
   height: 5,
 };
+
+//함수 시그니처에도 type 키워드와 별칭을 사용할 수 있다.
+type ValidatorFn = (c: FormControl) => { [key: string]: any } | null;
+class FormControl {
+  constructor(initialValue: string, validator: ValidatorFn | null) {}
+}
+
+//?/* ----------------------------- 클래스 내 커스텀 타입 사용 ---------------------------- */
+// 타입스크립트는 다른 객체 지향 언어와 같이 접근 제어자가 있으며 readonly, private, protected, public 키워드가 있다.
+class Person {
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public age: number
+  ) {}
+}
+const p: Person = new Person("An", "ByungHoon", 25);
+
+//* public
+// 타입스크립트 클래스 내 각 생성자 파라미터에 public 접근 제어자를 사용할 수 있다.
+// 생성된 프로퍼티는 클래스 내부 및 외부에서 접근할 수 있게 된다.
+
+//* readOnly
+// 제한자는 변경 불가능한 상수를 나타내는 const 키워드와 비슷하지만 const는 클래스 프로퍼티에 사용할 수 없다.
+class Block {
+  readonly nonce: number; // 생성자 내부에 초기화된 프로퍼티
+  readonly hash: string;
+  constructor(
+    readonly index: number, // 초기화 중 프로퍼티 값이 생성자에 전달됨
+    readonly previousHash: string,
+    readonly timestamp: number,
+    readonly data: string
+  ) {
+    const { nonce, hash } = this.mine(); // mine() 메서드에서 반환된 객체를 구조 분해 구문으로 상수를 선언
+    this.nonce = nonce;
+    this.hash = hash;
+  }
+  mine = () => {
+    return { nonce: 1, hash: "one" };
+  };
+}
+
+//?/* ---------------------------- 인터페이스를 사용한 커스텀 타입 --------------------------- */
+// 타입스크립트에는 인터페이스를 지원하는 interface와 implements 키워드가 있다.
+// 자바스크립트 코드로 컴파일 되지 않는다.
+interface Person {
+  firstName: string;
+  lastName: string;
+  age: number;
+}
+// interface는 자바스크립트 코드에 해당되지 않기 때문에 간결하고 배포하기에도 적합하다.
+
+// 런타임 동안 객체를 인스턴스화한다면 interface 또는 type을 사용하고 그 반대의 경우에는 class를 사용한다.
