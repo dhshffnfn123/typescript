@@ -219,3 +219,37 @@ interface Person {
 // interface는 자바스크립트 코드에 해당되지 않기 때문에 간결하고 배포하기에도 적합하다.
 
 // 런타임 동안 객체를 인스턴스화한다면 interface 또는 type을 사용하고 그 반대의 경우에는 class를 사용한다.
+
+//?/* ------------------------- 구조적 타입 시스템과 명목적 타입 시스템 ------------------------- */
+//* 명목적 타입 시스템
+// 명목적 타입 시스템을 사용하는 자바 같은 일부 객체지향 언어는 같은 네임스페이스 안에 같은 이름으로 선언된 클래스를 동일하다고 판단한다.
+/* -- 자바 --
+class PersonJava {
+  String name;
+}
+class Customer {
+  String name;
+}
+Customer cust = new Person(); // 구문 오류 : 왼쪽과 오른쪽 클래스 이름이 다르다.
+*/
+
+// 그러나 타입스크립트와 일부 언어는 구조적 타입 시스템을 사용한다.
+class People {
+  name: string;
+}
+class Customer {
+  name: string;
+}
+const cust: Customer = new People(); // 타입 구조가 같으므로 오류가 발생하지 않는다.
+
+//TODO 접근 제어자는 타입 호환성에 영향을 준다. People클래스에 name프로퍼티가 private일 경우 컴파일 되지 않는다.
+// 프로퍼티를 추가해도 오류가 나지 않는다.
+class People2 {
+  name: string;
+  age: number;
+}
+class Customer2 {
+  name: string;
+}
+const cust2: Customer2 = new People2(); // 오류가 발생하지 않는다.
+const cust3: People = new Customer2(); // 타입이 일치하지 않는다.
