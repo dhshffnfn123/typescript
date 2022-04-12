@@ -252,4 +252,4 @@ class Customer2 {
   name: string;
 }
 const cust2: Customer2 = new People2(); // 오류가 발생하지 않는다.
-const cust3: People = new Customer2(); // 타입이 일치하지 않는다.
+// const cust3: People2 = new Customer2(); // 타입이 일치하지 않는다.
