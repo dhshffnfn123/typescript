@@ -253,3 +253,13 @@ class Customer2 {
 }
 const cust2: Customer2 = new People2(); // 오류가 발생하지 않는다.
 // const cust3: People2 = new Customer2(); // 타입이 일치하지 않는다.
+
+//?/* ------------------------------- 커스텀 타입의 유니온 ------------------------------ */
+// 사용자 활동에 응답하는 다양한 액션을 가진 애플리케이션을 개발한다고 가정한다면,
+// 각 액션을 다른 이름의 클래스로 만든다.
+// 액션의 타입은 필수이며 옵션 사항으로 검색 쿼리 등을 가진 페이로드를 가진다.
+
+export class SearchAction {
+  actionType = "SEARCH";
+  constructor(readonly payload: { searchQuery: string }) {}
+}
