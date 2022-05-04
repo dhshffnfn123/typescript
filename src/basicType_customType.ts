@@ -263,3 +263,19 @@ export class SearchAction {
   actionType = "SEARCH";
   constructor(readonly payload: { searchQuery: string }) {}
 }
+
+export class SearchSuccessAction {
+  [1];
+  actionType = "SEARCH_SUCCESS";
+  constructor(public payload: { searchResults: string[] }) {}
+}
+
+export class SearchFailedAction {
+  // 액션 타입은 있지만 페이로드가 없음
+  actionType = "SEARCH_FAILED";
+}
+
+export type SearchActions =
+  | SearchAction
+  | SearchSuccessAction
+  | SearchFailedAction; // 유니온 타입 선언
