@@ -188,7 +188,7 @@ const p: Person = new Person("An", "ByungHoon", 25);
 // 타입스크립트 클래스 내 각 생성자 파라미터에 public 접근 제어자를 사용할 수 있다.
 // 생성된 프로퍼티는 클래스 내부 및 외부에서 접근할 수 있게 된다.
 
-//* readOnly
+//* read only
 // 제한자는 변경 불가능한 상수를 나타내는 const 키워드와 비슷하지만 const는 클래스 프로퍼티에 사용할 수 없다.
 class Block {
   readonly nonce: number; // 생성자 내부에 초기화된 프로퍼티
