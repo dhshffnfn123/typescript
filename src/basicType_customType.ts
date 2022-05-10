@@ -278,4 +278,4 @@ export class SearchFailedAction {
 export type SearchActions =
   | SearchAction
   | SearchSuccessAction
-  | SearchFailedAction; // 유니온 타입 선언
+  | SearchFailedAction;
