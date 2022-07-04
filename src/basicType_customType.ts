@@ -113,6 +113,7 @@ function typingCalcTax(
 let padding: string | number; // 숫자 또는 문자열만 허용
 
 function pddLeft(value: string, padding: any): string {
+  // 리턴 값이 반드시 문자열 이어야 한다.
   if (typeof padding === "number") {
     // padding에 전달된 값이 number이면 공백을 만듭니다.
     return Array(padding + 1).join("") + value;
